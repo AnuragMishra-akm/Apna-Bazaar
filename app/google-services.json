@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "744568592415",
+    "project_id": "apna-bazaar-f1251",
+    "storage_bucket": "apna-bazaar-f1251.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:744568592415:android:4faec6437d713a9f2b1d2a",
+        "android_client_info": {
+          "package_name": "com.example.apnabazaar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBU62KllIFlSyeKgWQhVJ6mgLmcM3wjW1k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
