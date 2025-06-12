@@ -24,7 +24,6 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
@@ -63,8 +62,9 @@ fun LoginScreen(navController: NavHostController, authViewModel: AuthViewModel) 
                 fontWeight = FontWeight.Bold,
             )
         )
+
         Image(
-            painter = painterResource(id = res.drawable.icon),
+            painter = painterResource(com.example.apnabazaar.R.drawable.logoicon),
             contentDescription = "Logo",
             modifier = Modifier
                 .fillMaxWidth()
@@ -103,7 +103,7 @@ fun LoginScreen(navController: NavHostController, authViewModel: AuthViewModel) 
                         }
                     } else {
                         isLoading = false
-                        AppUtil.showToast(localContext, errormessage ?: "Error In Loging In")
+                        AppUtil.showToast(localContext, errormessage)
                     }
                 }
             },

@@ -1,6 +1,5 @@
 package com.example.apnabazaar.screen
 
-import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -30,8 +29,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.apnabazaar.AppUtil
 import com.example.apnabazaar.viewmodel.AuthViewModel
-import kotlinx.coroutines.CompletionHandler
-
 @Composable
 fun SignUpScreen(navController: NavHostController, authViewModel: AuthViewModel){
     var email by remember { mutableStateOf("") }
@@ -58,7 +55,7 @@ fun SignUpScreen(navController: NavHostController, authViewModel: AuthViewModel)
                 fontWeight = FontWeight.Bold,
             )
             )
-            Image(painter = painterResource(id = res.drawable.icon), contentDescription = "Logo", modifier = Modifier
+            Image(painter = painterResource(id = com.example.apnabazaar.R.drawable.logoicon), contentDescription = "Logo", modifier = Modifier
                 .fillMaxWidth().height(200.dp))
             Spacer(modifier = Modifier.height(20.dp))
 

@@ -29,7 +29,7 @@ fun AuthScreen(navController: NavHostController){
     Column(modifier = Modifier.fillMaxSize().padding(32.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally){
-        Image(painter = painterResource(id = R.drawable.icon), contentDescription = "Logo",
+        Image(painter = painterResource(id = com.example.apnabazaar.R.drawable.logoicon), contentDescription = "Logo",
             modifier = Modifier.fillMaxWidth().height(300.dp))
         Spacer(modifier = Modifier.height(20.dp))
         Text(text = "Start Your Shopping Journey Now",
