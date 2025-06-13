@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.apnabazaar.pages.CategoryProductPage
+import com.example.apnabazaar.pages.ProductDetailsPage
 import com.example.apnabazaar.screen.AuthScreen
 import com.example.apnabazaar.screen.HomeScreen
 import com.example.apnabazaar.screen.LoginScreen
@@ -28,8 +29,12 @@ fun AppNavigation(){
         composable("signup"){ SignUpScreen(navController,authViewModel = authViewModel) }
         composable("home"){ HomeScreen(navController) }
         composable("categoryproducts/{category-id}"){ //here we passed categoryid as parameter in navigation
-            var categoryId = it.arguments?.getString("category-id")
+            val categoryId = it.arguments?.getString("category-id")
             CategoryProductPage(categoryId = categoryId?:"") }
+        composable("productsdetails/{product-id}"){ //here we passed productid as parameter in navigation
+            val productId = it.arguments?.getString("product-id")
+            ProductDetailsPage(productId = productId?:"")
+        }
     }
 }
 

@@ -1,5 +1,6 @@
 package com.example.apnabazaar.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -24,11 +25,14 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
+import com.example.apnabazaar.GlobalNavigation
 import com.example.apnabazaar.model.ProductModel
 
 @Composable
 fun ProductItem(product: ProductModel,modifier: Modifier){
-    Card(modifier.padding(8.dp), shape =RoundedCornerShape(12.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),elevation = CardDefaults.cardElevation(8.dp) ) {
+    Card(modifier.padding(8.dp).clickable {
+        GlobalNavigation.navController.navigate("productdetails/${product.id}")  //build logic for product detuls page from product id
+    }, shape =RoundedCornerShape(12.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),elevation = CardDefaults.cardElevation(8.dp) ) {
         Column(modifier = Modifier.padding(8.dp)){
             AsyncImage(model = product.images.firstOrNull(), contentDescription = product.title,modifier= Modifier.height(150.dp).fillMaxWidth())
             Text(text = product.title, fontWeight = FontWeight.Bold, maxLines = 1, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis, modifier = Modifier.padding(8.dp) )
