@@ -19,17 +19,20 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
+import com.example.apnabazaar.AppUtil
 import com.example.apnabazaar.GlobalNavigation
 import com.example.apnabazaar.model.ProductModel
 
 @Composable
 fun ProductItem(product: ProductModel,modifier: Modifier){
+    val context = LocalContext.current
     Card(modifier.padding(8.dp).clickable {
         GlobalNavigation.navController.navigate("productdetails/${product.id}")  //build logic for product detuls page from product id
     }, shape =RoundedCornerShape(12.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),elevation = CardDefaults.cardElevation(8.dp) ) {
@@ -42,7 +45,7 @@ fun ProductItem(product: ProductModel,modifier: Modifier){
                 Text(text = "₹"+product.price, fontSize = 14.sp ,maxLines = 1, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis, style = TextStyle(textDecoration = TextDecoration.LineThrough))
                 Text(text = "₹"+product.actualPrice, fontSize = 16.sp,fontWeight = FontWeight.SemiBold, maxLines = 1, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
                Spacer(modifier = Modifier.weight(1f)) // by this cart icon will go to extreme right
-                IconButton(onClick = {}) {
+                IconButton(onClick = { AppUtil.addItemCart(product.id, context = context) }) {
                     Icon(imageVector = Icons.Default.ShoppingCart , contentDescription = "add to cart")
                 }
             }

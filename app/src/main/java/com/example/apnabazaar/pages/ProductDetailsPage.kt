@@ -14,7 +14,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FavoriteBorder
-import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -29,12 +28,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
+import com.example.apnabazaar.AppUtil
 import com.example.apnabazaar.model.ProductModel
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
@@ -44,6 +45,7 @@ import com.tbuonomo.viewpagerdotsindicator.compose.type.ShiftIndicatorType
 
 @Composable
 fun ProductDetailsPage(productId: String){
+    val context = LocalContext.current
     var product by remember{
         mutableStateOf(ProductModel())
     }
@@ -127,7 +129,7 @@ fun ProductDetailsPage(productId: String){
 
 
         Button(
-            onClick = {},
+            onClick = { AppUtil.addItemCart(productId, 1 , context=context)},
             modifier = Modifier.fillMaxWidth().height(50.dp)
         ) {
             Text(text = "Add To Cart", fontSize = 16.sp)
