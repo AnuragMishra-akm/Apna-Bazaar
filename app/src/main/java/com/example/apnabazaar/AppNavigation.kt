@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.apnabazaar.pages.CategoryProductPage
+import com.example.apnabazaar.pages.CheckoutPage
 import com.example.apnabazaar.pages.ProductDetailsPage
 import com.example.apnabazaar.screen.AuthScreen
 import com.example.apnabazaar.screen.HomeScreen
@@ -35,6 +36,8 @@ fun AppNavigation(){
             val productId = it.arguments?.getString("product-id")
             ProductDetailsPage(productId = productId?:"")
         }
+        composable("checkoutpage"){ CheckoutPage() }
+
     }
 }
 

@@ -5,5 +5,6 @@ data class UserModel(
     val email: String="",
     val userId: String="",
     // we should not store password , it should be handled by authentication
-    val cartItem : Map<String,Long> = emptyMap()
+    val cartItem : Map<String,Long> = emptyMap(),
+    val address: String=""
 )

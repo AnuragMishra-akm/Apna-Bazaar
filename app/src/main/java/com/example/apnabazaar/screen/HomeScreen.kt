@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -36,8 +37,8 @@ fun HomeScreen(navController: NavHostController) {
         BottomNavItem("Profile", "profile", Icons.Default.Person)
 
     )
-    var selectedIndex by remember {
-        mutableStateOf(0)
+    var selectedIndex by rememberSaveable { //it is because when we click back button on any screen ,it directly takes us to homescreen rather than previous screen
+        mutableStateOf(0)  //so it will remember where we were before clicking back button
     }
     Scaffold(
         bottomBar = {

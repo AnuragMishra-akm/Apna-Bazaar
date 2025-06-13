@@ -2,9 +2,12 @@ package com.example.apnabazaar.pages
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -14,6 +17,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.apnabazaar.AppUtil
+import com.example.apnabazaar.GlobalNavigation
 import com.example.apnabazaar.components.CartItemView
 import com.example.apnabazaar.model.UserModel
 import com.google.firebase.Firebase
@@ -46,11 +51,17 @@ fun CartPage(modifier: Modifier) {
         modifier = modifier.fillMaxSize().padding(16.dp)
     ) {
         Text("Your Cart", style = TextStyle(fontSize = 24.sp , fontWeight = androidx.compose.ui.text.font.FontWeight.Bold))
-        LazyColumn {
+        LazyColumn (modifier.weight(1f)){
             items(userModel.value.cartItem.toList(),key={it.first}){(productId,quantity)->
                 CartItemView(modifier,productId,quantity)
-            } // here key is passed , bacause when i delete any item, the other one will be gone ,and when we come back it is corrected
+            } // here key is passed , because when i delete any item, the other one will be gone ,and when we come back it is corrected
             // now it is fixed
+        }
+        Button(
+            onClick = { GlobalNavigation.navController.navigate("checkoutpage")},
+            modifier = Modifier.fillMaxWidth().height(50.dp)
+        ) {
+            Text(text = "Add To Cart", fontSize = 16.sp)
         }
     }
 }
