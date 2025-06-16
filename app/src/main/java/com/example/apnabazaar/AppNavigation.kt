@@ -42,8 +42,3 @@ fun AppNavigation(modifier: Modifier){
 
     }
 }
-
-object GlobalNavigation{
-    @SuppressLint("StaticFieldLeak")
-    lateinit var navController: NavHostController
-}

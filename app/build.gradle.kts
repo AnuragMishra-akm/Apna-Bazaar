@@ -44,6 +44,8 @@ dependencies {
     implementation("io.coil-kt.coil3:coil-compose:3.2.0")//for loading image
     implementation("com.tbuonomo:dotsindicator:5.1.0")// for dot indicator for better ui for sliding banners
     implementation("com.razorpay:checkout:1.6.23") //for payment integration by razorpay
+    implementation("androidx.navigation:navigation-compose:2.9.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.1")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -52,7 +54,6 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation(libs.androidx.navigation.compose.jvmstubs)
     implementation(libs.firebase.auth)
     implementation(libs.firebase.firestore)
     testImplementation(libs.junit)
