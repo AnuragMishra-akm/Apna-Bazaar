@@ -12,9 +12,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.apnabazaar.ui.theme.ApnaBazaarTheme
+import com.razorpay.PaymentResultListener
 
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
+class MainActivity : ComponentActivity(), PaymentResultListener { //here we are inheriting the PaymentResultListener Interface provided by
+    override fun onCreate(savedInstanceState: Bundle?) { //razorpay , to get methods for payment succes and failure
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
@@ -24,6 +25,24 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+
+    override fun onPaymentSuccess(p0: String?) {
+        AppUtil.clearCartAndAddToOrders()
+        val builder = android.app.AlertDialog.Builder(this)
+        builder.setTitle("Payment Successful")
+            .setMessage("Your order has been placed successfully")
+            .setPositiveButton("OK") { dialog, which ->
+                val navController = GlobalNavigation.navController
+                navController.navigate("home")
+                navController.popBackStack()
+            }
+            .setCancelable(false)
+            .show()
+    }
+
+    override fun onPaymentError(p0: Int, p1: String?) {
+        AppUtil.showToast(this,"Payment Failed")
     }
 }
 

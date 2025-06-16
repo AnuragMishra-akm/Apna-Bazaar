@@ -13,11 +13,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.apnabazaar.AppUtil
 import com.example.apnabazaar.GlobalNavigation
 import com.example.apnabazaar.components.CartItemView
 import com.example.apnabazaar.model.UserModel
@@ -50,7 +52,8 @@ fun CartPage(modifier: Modifier) {
     Column(
         modifier = modifier.fillMaxSize().padding(16.dp)
     ) {
-        Text("Your Cart", style = TextStyle(fontSize = 24.sp , fontWeight = androidx.compose.ui.text.font.FontWeight.Bold))
+        Text("Your Cart", style = TextStyle(fontSize = 24.sp , fontWeight = FontWeight.Bold))
+        if(userModel.value.cartItem.isNotEmpty()){  //create logic if our cart is empty , so make sure button is not visible
         LazyColumn (modifier.weight(1f)){
             items(userModel.value.cartItem.toList(),key={it.first}){(productId,quantity)->
                 CartItemView(modifier,productId,quantity)
@@ -63,5 +66,11 @@ fun CartPage(modifier: Modifier) {
         ) {
             Text(text = "Add To Cart", fontSize = 16.sp)
         }
+    }else{
+        Column(modifier = Modifier.fillMaxSize(),verticalArrangement = androidx.compose.foundation.layout.Arrangement.Center,horizontalAlignment = Alignment.CenterHorizontally) {
+            Text(text = "Your cart is so light", fontSize = 20.sp,fontFamily = FontFamily.Cursive ,fontWeight = FontWeight.SemiBold)
+            Text(text = "Add some stuff in it and made yourself happy", fontSize = 20.sp, fontFamily = FontFamily.Cursive, fontWeight = FontWeight.SemiBold)
+        }
+    }
     }
 }

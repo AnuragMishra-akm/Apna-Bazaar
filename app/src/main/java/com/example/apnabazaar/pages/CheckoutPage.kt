@@ -6,7 +6,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,6 +22,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.apnabazaar.AppUtil
+import com.example.apnabazaar.GlobalNavigation
 import com.example.apnabazaar.model.ProductModel
 import com.example.apnabazaar.model.UserModel
 import com.google.firebase.auth.FirebaseAuth
@@ -100,6 +103,13 @@ fun CheckoutPage(){
         Spacer(modifier = Modifier.padding(16.dp))
         Text("To Pay", modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
         Text("₹"+total.value.toString(), modifier = Modifier.fillMaxWidth(), fontSize = 30.sp, fontWeight = FontWeight.Bold ,textAlign = TextAlign.Center)
+        Spacer(modifier = Modifier.padding(16.dp))
+        Button(
+            onClick = { AppUtil.startPayment(total.value)},
+            modifier = Modifier.fillMaxWidth().height(50.dp)
+        ) {
+            Text(text = "Pay Now", fontSize = 16.sp)
+        }
     }
 }
 

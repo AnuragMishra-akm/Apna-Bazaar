@@ -1,6 +1,8 @@
 package com.example.apnabazaar
 
+import android.annotation.SuppressLint
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -18,7 +20,7 @@ import com.google.firebase.auth.auth
 
 
 @Composable
-fun AppNavigation(){
+fun AppNavigation(modifier: Modifier){
     val navController = rememberNavController()
     GlobalNavigation.navController = navController  // we use this to simplify navigation, as before it we have to inintalize everywhere navcontroller
     val authViewModel = AuthViewModel()
@@ -42,5 +44,6 @@ fun AppNavigation(){
 }
 
 object GlobalNavigation{
+    @SuppressLint("StaticFieldLeak")
     lateinit var navController: NavHostController
 }

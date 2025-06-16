@@ -43,6 +43,7 @@ android {
 dependencies {
     implementation("io.coil-kt.coil3:coil-compose:3.2.0")//for loading image
     implementation("com.tbuonomo:dotsindicator:5.1.0")// for dot indicator for better ui for sliding banners
+    implementation("com.razorpay:checkout:1.6.23") //for payment integration by razorpay
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
